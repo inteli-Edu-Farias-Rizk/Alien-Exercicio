@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício do Alien</title>
+    <!-- Inclusão da biblioteca Phaser via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
+    <!-- Estilo básico para centralizar o jogo na página -->
+    <style> body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; } </style>
+</head>
+
+<body>
+    <script>
+        // Define as dimensões do jogo
+        const larguraJogo = 700;
+        const alturaJogo = 850;
+
+        // Configurações básicas do jogo, incluindo tipo de renderização (AUTO escolhe entre WebGL e Canvas), dimensões e as funções da cena
+        const config = {
+            type: Phaser.AUTO, // Phaser tentará usar WebGL, mas recorrerá ao Canvas se necessário
+            width: larguraJogo,
+            height: alturaJogo,
+
+            // Objeto scene contendo métodos para carregar recursos (preload), criar os elementos do jogo (create) e atualizar o jogo em cada frame (update)
+            scene: {
+                preload: preload,
+                create: create,
+                update: update
+            }
+        };
+
+        // Cria uma nova instância do jogo com as configurações definidas
+        const game = new Phaser.Game(config);
+
+        function preload() {
+            // Carrega recursos antes do jogo começar, neste caso, uma imagem de fundo
+            this.load.image('background', 'assets/bg.png');
+        }
+
+        function create() {
+            // Adiciona a imagem de fundo ao jogo, centralizada baseada nas dimensões do jogo
+            this.add.image(larguraJogo / 2, alturaJogo / 2, 'background');
+        }
+
+        function update() {
+            // Atualizações em cada frame do jogo ocorrem aqui. Vazio neste exemplo, pois não há movimento ou interações definidas.
+        }
+    </script>
+</body>
+</html>
